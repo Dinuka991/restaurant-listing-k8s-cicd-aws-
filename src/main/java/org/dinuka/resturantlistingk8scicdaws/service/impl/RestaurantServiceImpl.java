@@ -1,7 +1,7 @@
 package org.dinuka.resturantlistingk8scicdaws.service.impl;
 
 import org.dinuka.resturantlistingk8scicdaws.modal.Restaurant;
-import org.dinuka.resturantlistingk8scicdaws.repository.RestauntantRepository;
+import org.dinuka.resturantlistingk8scicdaws.repository.RestaurantRepository;
 import org.dinuka.resturantlistingk8scicdaws.service.RestaurantService;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +13,9 @@ import java.util.Set;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
-    private final RestauntantRepository restaurantRepository;
+    private final RestaurantRepository restaurantRepository;
 
-    public RestaurantServiceImpl(RestauntantRepository restaurantRepository) {
+    public RestaurantServiceImpl(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
     }
 
