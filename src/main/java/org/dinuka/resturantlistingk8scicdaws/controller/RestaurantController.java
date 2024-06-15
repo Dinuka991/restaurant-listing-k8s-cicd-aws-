@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @RestController
@@ -19,6 +20,7 @@ public class RestaurantController {
 
     private final RestaurantService restaurantService;
 
+
     public RestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
     }
@@ -26,12 +28,7 @@ public class RestaurantController {
     @GetMapping("/all")
     public ResponseEntity<Set<RestaurantDTO>> getRestaurants(){
         Set<Restaurant> restaurants = restaurantService.getAllRestaurants();
-        System.out.println("restaurants = " + restaurants);
-        System.out.println("restaurants.size() = " + restaurants.size());
-
-        restaurants.stream()
-                .map(RestaurantMapper.INSTANCE::toDto).forEach(System.out::println);
-
+        Logger.getAnonymousLogger().info("restaurants = " + restaurants);
 
         return ResponseEntity.ok(restaurants.stream()
                 .map(RestaurantMapper.INSTANCE::toDto).collect(Collectors.toSet()));
