@@ -6,23 +6,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "address", indexes = {
-        @Index(name = "idx_address_city", columnList = "city"),
-        @Index(name = "idx_address_zipCode", columnList = "zipCode")
-})
-public class Address {
+@Table(name = "menu")
+public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String street;
-    private String city;
-    private String country;
-    private String zipCode;
+    private String name;
+    private String description;
+    private double price;
+    private String category;
+    private String type;
+    private String image;
+
+    @ManyToMany(mappedBy = "menus", fetch = FetchType.LAZY)
+    private Set<Restaurant> restaurants;
 }
