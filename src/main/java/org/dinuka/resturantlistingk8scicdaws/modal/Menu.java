@@ -1,15 +1,16 @@
 package org.dinuka.resturantlistingk8scicdaws.modal;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
+
+import javax.validation.constraints.*;
 
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,11 +21,24 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 1, max = 100)
     private String name;
+
+    @Size(max = 500)
     private String description;
+
+    @Min(0)
     private double price;
+
+    @NotNull
+    @Size(min = 1, max = 50)
     private String category;
-    private String type;
+
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String menuType;
+
     private String image;
 
     @ManyToMany(mappedBy = "menus", fetch = FetchType.LAZY)

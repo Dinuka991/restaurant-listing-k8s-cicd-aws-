@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.validation.constraints.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,11 +25,20 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
 
+    @NotNull
+    @Size(min = 1, max = 100)
     private String name;
-    private String role;
-    private String contactNumber;
-    private String hireDate;
 
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String employeeRole;
+
+    @NotNull
+    @Size(min = 1, max = 15)
+    private String contactNumber;
+
+    @NotNull
+    private LocalDateTime hireDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id" , referencedColumnName = "id")

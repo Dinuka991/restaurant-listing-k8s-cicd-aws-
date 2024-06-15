@@ -7,8 +7,6 @@ import org.dinuka.resturantlistingk8scicdaws.service.RestaurantService;
 import org.dinuka.resturantlistingk8scicdaws.util.RestaurantMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;

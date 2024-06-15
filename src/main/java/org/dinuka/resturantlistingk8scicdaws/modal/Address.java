@@ -1,8 +1,8 @@
 package org.dinuka.resturantlistingk8scicdaws.modal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Getter
@@ -20,12 +20,22 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 1, max = 100)
     private String street;
+
+    @NotNull
+    @Size(min = 1, max = 50)
     private String city;
+
+    @NotNull
+    @Size(min = 1, max = 50)
     private String country;
+
+    @NotNull
+    @Size(min = 1, max = 15)
     private String zipCode;
 
-    @OneToOne(mappedBy = "address")
-    @JsonIgnore
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Restaurant restaurant;
 }
