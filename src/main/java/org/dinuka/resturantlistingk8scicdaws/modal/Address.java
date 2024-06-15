@@ -1,13 +1,12 @@
 package org.dinuka.resturantlistingk8scicdaws.modal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,4 +24,8 @@ public class Address {
     private String city;
     private String country;
     private String zipCode;
+
+    @OneToOne(mappedBy = "address")
+    @JsonIgnore
+    private Restaurant restaurant;
 }

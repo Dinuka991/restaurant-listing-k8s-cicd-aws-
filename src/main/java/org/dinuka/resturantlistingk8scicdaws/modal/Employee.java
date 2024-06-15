@@ -1,17 +1,15 @@
 package org.dinuka.resturantlistingk8scicdaws.modal;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +27,11 @@ public class Employee {
     private String role;
     private String contactNumber;
     private String hireDate;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id" , referencedColumnName = "id")
+    private Restaurant restaurant;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
